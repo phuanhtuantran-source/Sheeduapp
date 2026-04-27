@@ -1,349 +1,375 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SheEdu - Nâng Tầm Phụ Nữ Số</title>
+    <title>SheEdu App Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
         }
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: #FDFCFD;
+            position: relative;
+            padding-bottom: 90px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-item.active {
+            color: #6A1B9A;
+        }
+        .nav-item.active i {
+            transform: scale(1.1);
+            color: #6A1B9A;
+        }
         .bg-gradient-sheedu {
             background: linear-gradient(135deg, #6A1B9A 0%, #D81B60 100%);
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #6A1B9A 0%, #D81B60 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .mentor-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #F3E5F5;
+        }
+        .img-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        }
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+<body class="bg-slate-100">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-gradient-sheedu rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
-                    <span class="text-2xl font-bold tracking-tight text-gradient">SheEdu</span>
-                </div>
-                <div class="hidden md:flex space-x-8 font-semibold">
-                    <a href="#about" class="hover:text-pink-600 transition">Về dự án</a>
-                    <a href="#ecosystem" class="hover:text-pink-600 transition">Hệ sinh thái</a>
-                    <a href="#roadmap" class="hover:text-pink-600 transition">Lộ trình</a>
-                    <a href="#contact" class="bg-gradient-sheedu text-white px-6 py-2 rounded-full hover:shadow-lg transition transform hover:-translate-y-1">Đăng ký ngay</a>
-                </div>
-                <div class="md:hidden">
-                    <i class="fa-solid fa-bars text-2xl text-purple-800"></i>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div class="relative z-10">
-                <span class="inline-block px-4 py-1 bg-purple-100 text-purple-700 rounded-full font-bold text-sm mb-4">Chiến dịch xã hội & Trao quyền số</span>
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                    Biến thời gian nhàn rỗi thành <span class="text-gradient">thu nhập bền vững</span>
-                </h1>
-                <p class="text-xl text-slate-600 mb-8 max-w-lg">
-                    Chương trình đào tạo kỹ năng kinh doanh số thực chiến dành riêng cho phụ nữ tại TP. Hồ Chí Minh. Không cần vốn, không lo rủi ro.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="bg-gradient-sheedu text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition transform hover:scale-105">
-                        Bắt đầu hành trình ngay
-                    </a>
-                    <a href="#ecosystem" class="border-2 border-purple-800 text-purple-800 text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition">
-                        Khám phá hệ sinh thái
-                    </a>
-                </div>
-                <div class="mt-10 flex items-center gap-4 text-slate-500">
-                    <div class="flex -space-x-2">
-                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-300" src="https://i.pravatar.cc/150?u=1" alt="Avatar">
-                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-300" src="https://i.pravatar.cc/150?u=2" alt="Avatar">
-                        <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-300" src="https://i.pravatar.cc/150?u=3" alt="Avatar">
-                    </div>
-                    <span>+200 mẹ bỉm sữa đã sẵn sàng tham gia</span>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -top-10 -right-10 w-64 h-64 bg-pink-200 rounded-full blur-3xl opacity-50"></div>
-                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-purple-200 rounded-full blur-3xl opacity-50"></div>
-                <div class="relative bg-white p-4 rounded-3xl shadow-2xl transform rotate-3">
-                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Phụ nữ làm việc tại nhà" class="rounded-2xl w-full h-[500px] object-cover">
-                    <div class="absolute bottom-10 -left-8 glass-card p-6 rounded-2xl shadow-xl max-w-[200px] transform -rotate-3 animate-bounce">
-                        <div class="text-3xl font-bold text-pink-600">+3 Triệu</div>
-                        <div class="text-sm text-slate-500 font-semibold">Thu nhập thụ động/tháng</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="bg-white py-16 border-y border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl font-bold text-purple-900 mb-2">500.000+</div>
-                <div class="text-slate-500">Target tại TP.HCM</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-purple-900 mb-2">35%</div>
-                <div class="text-slate-500">Tỷ lệ phát sinh đơn sớm</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-purple-900 mb-2">0 VNĐ</div>
-                <div class="text-slate-500">Vốn nhập hàng</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-purple-900 mb-2">16 Tuần</div>
-                <div class="text-slate-500">Đào tạo & Đồng hành</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem & Solution Section -->
-    <section id="about" class="py-24 px-4 bg-slate-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Thấu hiểu những rào cản của bạn</h2>
-                <div class="w-20 h-1 bg-gradient-sheedu mx-auto"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Phụ thuộc kinh tế</h3>
-                    <p class="text-slate-600">Mất nguồn thu nhập ổn định sau sinh, dẫn đến áp lực tâm lý và giảm tiếng nói trong gia đình.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Thiếu kỹ năng số</h3>
-                    <p class="text-slate-600">Chưa biết cách tận dụng TikTok, Shopee để tạo ra giá trị kinh tế dù có thời gian rảnh.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border-2 border-purple-200">
-                    <div class="w-14 h-14 bg-gradient-sheedu text-white rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-shield-heart"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Giải pháp SheEdu</h3>
-                    <p class="text-slate-600">Hệ sinh thái đào tạo, kết nối nguồn hàng và cộng đồng mentor giúp bạn tự chủ tài chính 100%.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ecosystem Section -->
-    <section id="ecosystem" class="py-24 px-4 bg-white relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Đào tạo nhóm" class="rounded-3xl shadow-2xl">
-                </div>
-                <div class="order-1 md:order-2">
-                    <h2 class="text-4xl font-bold mb-6">Hệ sinh thái <span class="text-gradient">3 Chân Kiềng</span></h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-purple-900 text-white rounded-xl flex items-center justify-center font-bold">1</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2">LMS Academy</h4>
-                                <p class="text-slate-600">Kho bài giảng video ngắn, ebook dễ hiểu về Livestream, xây kênh TikTok và quy trình Affiliate từ A-Z.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-purple-700 text-white rounded-xl flex items-center justify-center font-bold">2</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2">Mentorship Hub</h4>
-                                <p class="text-slate-600">Kết nối 1-1 với những người đi trước thành công, hỗ trợ sửa lỗi thực tế trong quá trình làm nội dung.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white rounded-xl flex items-center justify-center font-bold">3</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2">Supply Connect</h4>
-                                <p class="text-slate-600">Cổng kết nối các nhà cung cấp uy tín tại TP.HCM, cho phép bạn lấy mẫu thử miễn phí để review.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="py-24 px-4 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-16">Hành trình 120 ngày của bạn</h2>
-            <div class="grid md:grid-cols-4 gap-4 relative">
-                <!-- Line Desktop -->
-                <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-purple-800/30 -z-10"></div>
-                
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-gradient-sheedu rounded-full mx-auto mb-6 flex items-center justify-center font-bold border-4 border-slate-900">01</div>
-                    <h4 class="font-bold text-lg mb-2">Tháng 06: Nhập môn</h4>
-                    <p class="text-slate-400 text-sm">Học tư duy kinh tế số & Cách sử dụng công cụ quay dựng video điện thoại.</p>
-                </div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-gradient-sheedu rounded-full mx-auto mb-6 flex items-center justify-center font-bold border-4 border-slate-900">02</div>
-                    <h4 class="font-bold text-lg mb-2">Tháng 07: Thực chiến</h4>
-                    <p class="text-slate-400 text-sm">Bắt đầu xây dựng kênh & Thực hành Livestream dưới sự dẫn dắt của Mentor.</p>
-                </div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-gradient-sheedu rounded-full mx-auto mb-6 flex items-center justify-center font-bold border-4 border-slate-900">03</div>
-                    <h4 class="font-bold text-lg mb-2">Tháng 08: Thu hoạch</h4>
-                    <p class="text-slate-400 text-sm">Tối ưu hóa đơn hàng & Bắt đầu nhận thu nhập thụ động từ Affiliate.</p>
-                </div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-gradient-sheedu rounded-full mx-auto mb-6 flex items-center justify-center font-bold border-4 border-slate-900">04</div>
-                    <h4 class="font-bold text-lg mb-2">Tháng 09: Bền vững</h4>
-                    <p class="text-slate-400 text-sm">Kết nối nhãn hàng dài hạn & Trở thành Mentor cho các khóa sau.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SDG Section -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold mb-6">Cam kết phát triển bền vững (SDGs)</h2>
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 flex-shrink-0 bg-red-600 text-white flex items-center justify-center rounded-lg font-bold">4</div>
-                        <p class="text-slate-600"><span class="font-bold text-slate-900">SDG 4.4:</span> Nâng cao kỹ năng số và nghề nghiệp cho phụ nữ, giúp họ làm chủ doanh nghiệp tại gia.</p>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 flex-shrink-0 bg-orange-500 text-white flex items-center justify-center rounded-lg font-bold">5</div>
-                        <p class="text-slate-600"><span class="font-bold text-slate-900">SDG 5.b:</span> Sử dụng công nghệ thông tin (ICT) để thúc đẩy quyền năng và sự tự chủ cho phụ nữ.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="md:w-1/2 grid grid-cols-2 gap-4">
-                <div class="aspect-square bg-slate-100 rounded-2xl flex items-center justify-center p-8 text-center">
-                    <div>
-                        <div class="text-2xl font-bold text-purple-900">70%</div>
-                        <div class="text-xs text-slate-500 uppercase font-bold tracking-widest mt-1">Phụ nữ hài lòng</div>
-                    </div>
-                </div>
-                <div class="aspect-square bg-gradient-sheedu rounded-2xl flex items-center justify-center p-8 text-center text-white">
-                    <div>
-                        <div class="text-2xl font-bold">200+</div>
-                        <div class="text-xs uppercase font-bold tracking-widest mt-1">Học viên đầu tiên</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Registration Form -->
-    <section id="contact" class="py-24 px-4 bg-purple-50">
-        <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-purple-100">
-            <div class="bg-gradient-sheedu p-8 text-white text-center">
-                <h2 class="text-3xl font-bold mb-2">Đăng ký tham gia ngay</h2>
-                <p class="opacity-90">Chúng tôi sẽ liên hệ tư vấn trong vòng 24h</p>
-            </div>
-            <div class="p-8 md:p-12">
-                <form id="regForm" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Họ và tên</label>
-                            <input type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">Số điện thoại/Zalo</label>
-                            <input type="tel" placeholder="0901 234 567" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-2">Khu vực sinh sống (TP.HCM)</label>
-                        <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition">
-                            <option>Quận 1</option>
-                            <option>Quận 3</option>
-                            <option>Quận 7</option>
-                            <option>TP. Thủ Đức</option>
-                            <option>Quận Tân Bình</option>
-                            <option>Các quận huyện khác...</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-2">Kỹ năng bạn muốn học nhất?</label>
-                        <div class="grid grid-cols-2 gap-3 mt-2">
-                            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-100 bg-slate-50 cursor-pointer hover:bg-purple-50">
-                                <input type="checkbox" class="accent-purple-600"> <span>Affiliate</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-100 bg-slate-50 cursor-pointer hover:bg-purple-50">
-                                <input type="checkbox" class="accent-purple-600"> <span>Livestream</span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-sheedu text-white font-bold py-4 rounded-xl hover:shadow-xl transition transform active:scale-95">
-                        Gửi đăng ký dự tuyển
-                    </button>
-                    <p class="text-center text-xs text-slate-400">Dự án được hỗ trợ bởi các quỹ khởi nghiệp xã hội tại TP.HCM.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 px-4 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="app-container overflow-hidden">
+        
+        <!-- Header -->
+        <header class="px-6 py-6 flex justify-between items-center bg-white/90 backdrop-blur-md sticky top-0 z-40">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-gradient-sheedu rounded flex items-center justify-center text-white font-bold">S</div>
-                <span class="text-xl font-bold text-white tracking-tight">SheEdu</span>
+                <div class="w-8 h-8 bg-gradient-sheedu rounded-lg flex items-center justify-center text-white font-bold">S</div>
+                <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-800 to-pink-600 tracking-tight">SheEdu</h1>
             </div>
-            <div class="flex gap-8 text-sm">
-                <a href="#" class="hover:text-white">Điều khoản</a>
-                <a href="#" class="hover:text-white">Chính sách bảo mật</a>
-                <a href="#" class="hover:text-white">Hợp tác nhãn hàng</a>
+            <div class="flex gap-3">
+                <button class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400">
+                    <i class="fa-solid fa-search text-sm"></i>
+                </button>
+                <button class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 relative">
+                    <i class="fa-solid fa-bell text-sm"></i>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-pink-500 rounded-full border-2 border-white"></span>
+                </button>
             </div>
-            <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-purple-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto text-center mt-8 text-xs opacity-50">
-            © 2026 SheEdu Project. Được phát triển bởi UEH Students.
-        </div>
-    </footer>
+        </header>
 
-    <!-- Message Box Script -->
-    <div id="msgBox" class="fixed bottom-10 right-10 z-[100] transform translate-y-20 opacity-0 transition duration-500">
-        <div class="bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Đăng ký thành công! Mentor sẽ liên hệ bạn sớm.</span>
+        <!-- Main Content Area -->
+        <main class="px-6 pt-2">
+            
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="mb-6">
+                    <p class="text-slate-400 font-semibold text-xs mb-1 uppercase tracking-widest">Chào mẹ bỉm,</p>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Sẵn sàng tự chủ? ✨</h2>
+                </div>
+
+                <!-- Banner Image -->
+                <div class="relative rounded-[32px] overflow-hidden mb-8 h-48 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="[Ảnh mẹ và bé hạnh phúc]" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 img-overlay flex flex-col justify-end p-6 text-white">
+                        <p class="text-[10px] font-black uppercase tracking-[0.2em] mb-1 opacity-80">Chiến dịch Pilot TP.HCM</p>
+                        <h3 class="text-lg font-bold">Nâng tầm giá trị bản thân</h3>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-sheedu rounded-[28px] p-6 text-white mb-8 shadow-lg shadow-purple-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-[10px] opacity-80 mb-1 uppercase font-bold tracking-widest">Tiến độ lộ trình</p>
+                            <div class="text-2xl font-bold">Tuần 02/16</div>
+                        </div>
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white/20 h-1.5 rounded-full mb-3">
+                        <div class="bg-white h-1.5 rounded-full w-1/4 shadow-sm"></div>
+                    </div>
+                    <p class="text-[11px] opacity-90 italic">Giai đoạn: Xây dựng nền tảng nội dung</p>
+                </div>
+
+                <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Thống kê nhanh</h3>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="card flex flex-col items-center py-5">
+                        <div class="text-purple-700 font-black text-2xl mb-1">0đ</div>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Vốn đầu tư</p>
+                    </div>
+                    <div class="card flex flex-col items-center py-5 border-pink-50">
+                        <div class="text-pink-600 font-black text-2xl mb-1">35%</div>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Mục tiêu ra đơn</p>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Bài học đề xuất</h3>
+                <div class="card mb-6 flex items-center gap-4 border-l-4 border-l-purple-600">
+                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 shadow-inner">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-800">Livestream cơ bản</h4>
+                        <p class="text-[10px] text-slate-400 font-bold">Mentor Min • 15 phút</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Tab -->
+            <div id="learning" class="tab-content">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">Khóa học số</h2>
+                <div class="space-y-5">
+                    <!-- Course 1 -->
+                    <div class="card flex flex-col gap-4 p-0 overflow-hidden border-none shadow-md">
+                        <div class="h-44 bg-slate-200 relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="[Ảnh khóa học tư duy]" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-xl border border-white/30">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-[9px] font-black uppercase tracking-widest">Nền tảng</span>
+                            <h4 class="font-bold text-lg mt-2 text-slate-900">Tư duy Kinh tế số 101</h4>
+                            <div class="flex justify-between items-center mt-3">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">12 bài giảng</p>
+                                <p class="text-[10px] text-purple-700 font-black">20% Hoàn thành</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Course 2 -->
+                    <div class="card flex items-center gap-4 border-none shadow-sm">
+                        <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=200&q=80" alt="[Ảnh khóa học Tiktok]" class="w-full h-full object-cover opacity-60 grayscale">
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm text-slate-800">Xây kênh TikTok mẹ bỉm</h4>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">8 bài giảng • Đang khóa</p>
+                        </div>
+                        <i class="fa-solid fa-lock text-slate-300"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentors Tab -->
+            <div id="mentors" class="tab-content">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">Đội ngũ Mentors</h2>
+                <div class="space-y-5">
+                    <!-- Mentor 1: Min -->
+                    <div class="card flex gap-4 items-center border-none shadow-sm bg-white">
+                        <img src="./public/min.jpg" alt="Min" class="mentor-img" 
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-bold text-purple-900">Min</h4>
+                                <div class="icon-circle bg-purple-50 text-purple-600">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">Chuyên gia TikTok Shop Academy</p>
+                            <p class="text-xs text-slate-500 leading-snug">Đào tạo Livestream thực chiến cho mẹ bỉm.</p>
+                        </div>
+                    </div>
+                    <!-- Mentor 2: Vũ Diệu Thúy -->
+                    <div class="card flex gap-4 items-center border-none shadow-sm bg-white" style="border-left: 5px solid #D81B60;">
+                        <img src="./public/vu-dieu-thuy.jpg" alt="Vũ Diệu Thúy" class="mentor-img" 
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-bold text-purple-900">Vũ Diệu Thúy</h4>
+                                <div class="icon-circle bg-pink-50 text-pink-600">
+                                    <i class="fa-solid fa-wand-sparkles"></i>
+                                </div>
+                            </div>
+                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">Phù thủy Thương hiệu cá nhân</p>
+                            <p class="text-xs text-slate-500 leading-snug">Bậc thầy nội dung Viral & Affiliate.</p>
+                        </div>
+                    </div>
+                    <!-- Mentor 3: Phạm Hà -->
+                    <div class="card flex gap-4 items-center border-none shadow-sm bg-white">
+                        <img src="./public/pham-ha.png" alt="Phạm Hà" class="mentor-img"
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-bold text-purple-900">Phạm Hà</h4>
+                                <div class="icon-circle bg-blue-50 text-blue-600">
+                                    <i class="fa-solid fa-shield-heart"></i>
+                                </div>
+                            </div>
+                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">Empowerment Strategist</p>
+                            <p class="text-xs text-slate-500 leading-snug">Xây dựng hệ sinh thái kinh doanh bền vững.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="flex flex-col items-center mb-8 pt-4">
+                    <div class="relative">
+                        <div class="w-28 h-28 bg-slate-100 rounded-full p-1 shadow-lg">
+                            <img src="https://i.pravatar.cc/150?u=UEH_Student" alt="User Avatar" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div class="absolute bottom-1 right-1 w-8 h-8 bg-green-500 border-4 border-white rounded-full flex items-center justify-center text-white text-[10px]">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900 mt-4">Kim Thoa UEH</h2>
+                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1">Học viên Pilot • Quận 7</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="card flex justify-between items-center py-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-wallet text-sm"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-700">Ví thu nhập</span>
+                        </div>
+                        <span class="text-pink-600 font-black text-lg tracking-tight">3.250.000đ</span>
+                    </div>
+                    <div class="card flex justify-between items-center py-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-boxes-stacked text-sm"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-700">Nguồn hàng ưu đãi</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-200"></i>
+                    </div>
+                    <div class="card flex justify-between items-center py-5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-gear text-sm"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-700">Cài đặt ứng dụng</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-200"></i>
+                    </div>
+                </div>
+                <button class="w-full mt-10 py-4 text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] hover:text-red-400 transition-colors">
+                    Đăng xuất tài khoản
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 w-full max-w-[450px] bg-white/95 backdrop-blur-md border-t border-slate-50 px-8 py-5 flex justify-between items-center shadow-[0_-10px_30px_rgba(0,0,0,0.03)] z-50">
+            <button onclick="switchTab('home')" id="btn-home" class="nav-item active flex flex-col items-center gap-1.5 transition-all duration-300">
+                <i class="fa-solid fa-house-chimney text-xl"></i>
+                <span class="text-[9px] font-black uppercase tracking-widest">Trang chủ</span>
+            </button>
+            <button onclick="switchTab('learning')" id="btn-learning" class="nav-item flex flex-col items-center gap-1.5 text-slate-300 transition-all duration-300">
+                <i class="fa-solid fa-clapperboard text-xl"></i>
+                <span class="text-[9px] font-black uppercase tracking-widest">Bài học</span>
+            </button>
+            <button onclick="switchTab('mentors')" id="btn-mentors" class="nav-item flex flex-col items-center gap-1.5 text-slate-300 transition-all duration-300">
+                <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                <span class="text-[9px] font-black uppercase tracking-widest">Mentors</span>
+            </button>
+            <button onclick="switchTab('profile')" id="btn-profile" class="nav-item flex flex-col items-center gap-1.5 text-slate-300 transition-all duration-300">
+                <i class="fa-solid fa-circle-user text-xl"></i>
+                <span class="text-[9px] font-black uppercase tracking-widest">Cá nhân</span>
+            </button>
+        </nav>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl opacity-0 translate-y-4 transition-all duration-500 pointer-events-none z-50 flex items-center gap-3">
+            <div class="w-5 h-5 bg-pink-500 rounded-full flex items-center justify-center text-[10px]">
+                <i class="fa-solid fa-sparkles"></i>
+            </div>
+            <span id="toastMsg" class="text-xs font-bold tracking-tight">Chào mừng bạn trở lại!</span>
         </div>
+
     </div>
 
     <script>
-        const form = document.getElementById('regForm');
-        const msgBox = document.getElementById('msgBox');
+        // Tab switching logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-slate-300');
+            });
+            document.getElementById('btn-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.remove('text-slate-300');
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            msgBox.classList.remove('translate-y-20', 'opacity-0');
-            form.reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Custom Toast function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toastMsg');
+            msg.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
             setTimeout(() => {
-                msgBox.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        });
+                toast.classList.add('opacity-0', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                showToast("Bạn có 1 bài tập mới từ Mentor Min! 📚");
+            }, 1000);
+        };
     </script>
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
+    <div class="bg-white px-4 py-2 rounded-lg shadow-lg text-sm font-bold text-purple-800 border border-purple-100 animate-bounce">
+        Chat với Mentor ngay! 👋
+    </div>
+    <a href="https://zalo.me/số-điện-thoại-của-ông" target="_blank" class="w-16 h-16 bg-gradient-sheedu rounded-full shadow-2xl flex items-center justify-center text-white text-3xl hover:scale-110 transition duration-300 ring-4 ring-purple-100">
+        <i class="fa-solid fa-comment-dots"></i>
+    </a>
+</div>
 </body>
 </html>
