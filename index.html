@@ -53,6 +53,7 @@
             border-radius: 18px;
             border: 3px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            flex-shrink: 0;
         }
         .card {
             background: white;
@@ -72,6 +73,7 @@
             align-items: center;
             justify-content: center;
             font-size: 14px;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -106,9 +108,8 @@
                     <h2 class="text-2xl font-extrabold text-slate-900">Sẵn sàng tự chủ? ✨</h2>
                 </div>
 
-                <!-- Banner Image -->
                 <div class="relative rounded-[32px] overflow-hidden mb-8 h-48 shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="[Ảnh mẹ và bé hạnh phúc]" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="Mẹ và bé" class="w-full h-full object-cover">
                     <div class="absolute inset-0 img-overlay flex flex-col justify-end p-6 text-white">
                         <p class="text-[10px] font-black uppercase tracking-[0.2em] mb-1 opacity-80">Chiến dịch Pilot TP.HCM</p>
                         <h3 class="text-lg font-bold">Nâng tầm giá trị bản thân</h3>
@@ -142,30 +143,15 @@
                         <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Mục tiêu ra đơn</p>
                     </div>
                 </div>
-
-                <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Bài học đề xuất</h3>
-                <div class="card mb-6 flex items-center gap-4 border-l-4 border-l-purple-600">
-                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 shadow-inner">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-bold text-sm text-slate-800">Livestream cơ bản</h4>
-                        <p class="text-[10px] text-slate-400 font-bold">Mentor Min • 15 phút</p>
-                    </div>
-                    <button class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center">
-                        <i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i>
-                    </button>
-                </div>
             </div>
 
             <!-- Learning Tab -->
             <div id="learning" class="tab-content">
                 <h2 class="text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">Khóa học số</h2>
                 <div class="space-y-5">
-                    <!-- Course 1 -->
                     <div class="card flex flex-col gap-4 p-0 overflow-hidden border-none shadow-md">
                         <div class="h-44 bg-slate-200 relative">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="[Ảnh khóa học tư duy]" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Khóa học" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                                 <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-xl border border-white/30">
                                     <i class="fa-solid fa-play ml-1"></i>
@@ -175,22 +161,7 @@
                         <div class="p-5">
                             <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-[9px] font-black uppercase tracking-widest">Nền tảng</span>
                             <h4 class="font-bold text-lg mt-2 text-slate-900">Tư duy Kinh tế số 101</h4>
-                            <div class="flex justify-between items-center mt-3">
-                                <p class="text-[10px] text-slate-400 font-bold uppercase">12 bài giảng</p>
-                                <p class="text-[10px] text-purple-700 font-black">20% Hoàn thành</p>
-                            </div>
                         </div>
-                    </div>
-                    <!-- Course 2 -->
-                    <div class="card flex items-center gap-4 border-none shadow-sm">
-                        <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
-                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=200&q=80" alt="[Ảnh khóa học Tiktok]" class="w-full h-full object-cover opacity-60 grayscale">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-bold text-sm text-slate-800">Xây kênh TikTok mẹ bỉm</h4>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">8 bài giảng • Đang khóa</p>
-                        </div>
-                        <i class="fa-solid fa-lock text-slate-300"></i>
                     </div>
                 </div>
             </div>
@@ -201,7 +172,7 @@
                 <div class="space-y-5">
                     <!-- Mentor 1: Min -->
                     <div class="card flex gap-4 items-center border-none shadow-sm bg-white">
-                        <img src="./public/min.jpg" alt="Min" class="mentor-img" 
+                        <img src="./public/min.jpg" alt="Min" class="mentor-img">
                         <div class="flex-1">
                             <div class="flex justify-between items-start">
                                 <h4 class="text-lg font-bold text-purple-900">Min</h4>
@@ -209,13 +180,13 @@
                                     <i class="fa-solid fa-star"></i>
                                 </div>
                             </div>
-                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">Chuyên gia TikTok Shop Academy</p>
-                            <p class="text-xs text-slate-500 leading-snug">Đào tạo Livestream thực chiến cho mẹ bỉm.</p>
+                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">CHUYÊN GIA TIKTOK SHOP ACADEMY</p>
+                            <p class="text-xs text-slate-500 leading-snug">Chuyên gia đào tạo được chứng nhận bởi TikTok Shop.</p>
                         </div>
                     </div>
                     <!-- Mentor 2: Vũ Diệu Thúy -->
                     <div class="card flex gap-4 items-center border-none shadow-sm bg-white" style="border-left: 5px solid #D81B60;">
-                        <img src="./public/vu-dieu-thuy.jpg" alt="Vũ Diệu Thúy" class="mentor-img" 
+                        <img src="./public/vu-dieu-thuy.jpg" alt="Vũ Diệu Thúy" class="mentor-img">
                         <div class="flex-1">
                             <div class="flex justify-between items-start">
                                 <h4 class="text-lg font-bold text-purple-900">Vũ Diệu Thúy</h4>
@@ -229,7 +200,7 @@
                     </div>
                     <!-- Mentor 3: Phạm Hà -->
                     <div class="card flex gap-4 items-center border-none shadow-sm bg-white">
-                        <img src="./public/pham-ha.png" alt="Phạm Hà" class="mentor-img"
+                        <img src="./public/pham-ha.png" alt="Phạm Hà" class="mentor-img">
                         <div class="flex-1">
                             <div class="flex justify-between items-start">
                                 <h4 class="text-lg font-bold text-purple-900">Phạm Hà</h4>
@@ -237,7 +208,7 @@
                                     <i class="fa-solid fa-shield-heart"></i>
                                 </div>
                             </div>
-                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight">Empowerment Strategist</p>
+                            <p class="text-[9px] text-pink-600 font-black uppercase tracking-wider mb-2 leading-tight text-right">EMPOWERMENT STRATEGIST</p>
                             <p class="text-xs text-slate-500 leading-snug">Xây dựng hệ sinh thái kinh doanh bền vững.</p>
                         </div>
                     </div>
@@ -248,49 +219,12 @@
             <div id="profile" class="tab-content">
                 <div class="flex flex-col items-center mb-8 pt-4">
                     <div class="relative">
-                        <div class="w-28 h-28 bg-slate-100 rounded-full p-1 shadow-lg">
-                            <img src="https://i.pravatar.cc/150?u=UEH_Student" alt="User Avatar" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <div class="absolute bottom-1 right-1 w-8 h-8 bg-green-500 border-4 border-white rounded-full flex items-center justify-center text-white text-[10px]">
-                            <i class="fa-solid fa-check"></i>
+                        <div class="w-28 h-28 bg-slate-100 rounded-full p-1 shadow-lg overflow-hidden">
+                            <img src="./public/profile.jpg" alt="User Avatar" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <h2 class="text-xl font-bold text-slate-900 mt-4">Kim Thoa UEH</h2>
-                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-1">Học viên Pilot • Quận 7</p>
                 </div>
-                
-                <div class="space-y-4">
-                    <div class="card flex justify-between items-center py-5">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-wallet text-sm"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-700">Ví thu nhập</span>
-                        </div>
-                        <span class="text-pink-600 font-black text-lg tracking-tight">3.250.000đ</span>
-                    </div>
-                    <div class="card flex justify-between items-center py-5">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-boxes-stacked text-sm"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-700">Nguồn hàng ưu đãi</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-slate-200"></i>
-                    </div>
-                    <div class="card flex justify-between items-center py-5">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-gear text-sm"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-700">Cài đặt ứng dụng</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-slate-200"></i>
-                    </div>
-                </div>
-                <button class="w-full mt-10 py-4 text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] hover:text-red-400 transition-colors">
-                    Đăng xuất tài khoản
-                </button>
             </div>
 
         </main>
@@ -317,20 +251,24 @@
 
         <!-- Toast Notification -->
         <div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl opacity-0 translate-y-4 transition-all duration-500 pointer-events-none z-50 flex items-center gap-3">
-            <div class="w-5 h-5 bg-pink-500 rounded-full flex items-center justify-center text-[10px]">
-                <i class="fa-solid fa-sparkles"></i>
+            <span id="toastMsg" class="text-xs font-bold tracking-tight">Chào mừng bồ quay lại!</span>
+        </div>
+
+        <!-- Floating Chat Button (Zalo) -->
+        <div class="fixed bottom-[100px] right-6 z-[100] flex flex-col items-end gap-3 pointer-events-auto" style="max-width: 450px;">
+            <div class="bg-white px-4 py-2 rounded-lg shadow-lg text-xs font-bold text-purple-800 border border-purple-100 animate-bounce">
+                Chat với Mentor ngay! 👋
             </div>
-            <span id="toastMsg" class="text-xs font-bold tracking-tight">Chào mừng bạn trở lại!</span>
+            <a href="https://zalo.me/your-number" target="_blank" class="w-14 h-14 bg-gradient-sheedu rounded-full shadow-2xl flex items-center justify-center text-white text-2xl hover:scale-110 transition duration-300 ring-4 ring-purple-100">
+                <i class="fa-solid fa-comment-dots"></i>
+            </a>
         </div>
 
     </div>
 
     <script>
-        // Tab switching logic
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             
             document.querySelectorAll('.nav-item').forEach(btn => {
@@ -339,37 +277,19 @@
             });
             document.getElementById('btn-' + tabId).classList.add('active');
             document.getElementById('btn-' + tabId).classList.remove('text-slate-300');
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Custom Toast function
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const msg = document.getElementById('toastMsg');
-            msg.innerText = message;
-            toast.classList.remove('opacity-0', 'translate-y-4');
-            toast.classList.add('opacity-100', 'translate-y-0');
-            
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-4');
-                toast.classList.remove('opacity-100', 'translate-y-0');
-            }, 3500);
         }
 
         window.onload = function() {
             setTimeout(() => {
-                showToast("Bạn có 1 bài tập mới từ Mentor Min! 📚");
+                const toast = document.getElementById('toast');
+                toast.classList.remove('opacity-0', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4');
+                }, 3000);
             }, 1000);
         };
     </script>
-    <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
-    <div class="bg-white px-4 py-2 rounded-lg shadow-lg text-sm font-bold text-purple-800 border border-purple-100 animate-bounce">
-        Chat với Mentor ngay! 👋
-    </div>
-    <a href="https://zalo.me/số-điện-thoại-của-ông" target="_blank" class="w-16 h-16 bg-gradient-sheedu rounded-full shadow-2xl flex items-center justify-center text-white text-3xl hover:scale-110 transition duration-300 ring-4 ring-purple-100">
-        <i class="fa-solid fa-comment-dots"></i>
-    </a>
-</div>
 </body>
 </html>
